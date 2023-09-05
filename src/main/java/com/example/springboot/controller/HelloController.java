@@ -1,11 +1,11 @@
-package com.example.springboot.controllers;
+package com.example.springboot.controller;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@ConfigurationProperties("hello")
+@ConfigurationProperties("netology.profile")
 public class HelloController {
 
     private String from;
