@@ -1,22 +1,22 @@
 package com.example.springboot.controller;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.example.springboot.domain.Person;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@ConfigurationProperties("netology.profile")
 public class HelloController {
 
+    @Value("myAppTest")
     private String from;
 
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    @GetMapping("/")
-    private String hello() {
-        return String.format("Hello %s!", from);
+    @PostMapping("/hello")
+    private String hello(@RequestBody @Validated Person guest) {
+        return String.format("Hello %s to name %s age %d!",
+                from, guest.getName(), guest.getAge());
     }
 
 }
